@@ -1,22 +1,15 @@
 import { Engine } from 'babylonjs';
 import { createScene } from './scene';
 
-// const app = document.querySelector<HTMLDivElement>('#app')!
+const canvas = document.getElementById("renderCanvas"); // キャンバス要素を取得
+const engine = new Engine(canvas as HTMLCanvasElement, true); // BABYLON 3D エンジンを生成
 
-// app.innerHTML = `
-//   <h1>Hello Vite!</h1>
-//   <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-// `
-
-const canvas = document.getElementById("renderCanvas"); // Get the canvas element
-const engine = new Engine(canvas as HTMLCanvasElement, true); // Generate the BABYLON 3D engine
-
-// Register a render loop to repeatedly render the scene
+// レンダリングループを登録して、シーンを繰り返しレンダリング
 createScene(engine).then(sceneToRender => {
     engine.runRenderLoop(() => sceneToRender.render());
 });
 
-// Watch for browser/canvas resize events
+// ブラウザとキャンバスのリサイズイベントを監視
 window.addEventListener("resize", function () {
         engine.resize();
 });
