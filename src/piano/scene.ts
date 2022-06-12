@@ -80,7 +80,7 @@ const scaleFromPivot = (transformNode: TransformNode, pivotPoint: Vector3, scale
     transformNode.position = new Vector3(pivotPoint.x + _sx * (transformNode.position.x - pivotPoint.x), pivotPoint.y + _sy * (transformNode.position.y - pivotPoint.y), pivotPoint.z + _sz * (transformNode.position.z - pivotPoint.z));
 }
 
-export const createScene = async (engine: Engine) => {
+export const createScene = async (canvas: HTMLElement, engine: Engine) => {
     const scale = 0.015;
     const scene = new Scene(engine);
 
@@ -89,7 +89,6 @@ export const createScene = async (engine: Engine) => {
     const radius = 220*scale;
     const target = new Vector3(0, 0, 0);
 
-    const canvas = document.getElementById("renderCanvas");
     const camera = new ArcRotateCamera("Camera", alpha, beta, radius, target, scene);
     camera.attachControl(canvas, true);
 
@@ -137,7 +136,7 @@ export const createScene = async (engine: Engine) => {
     keyboard.parent = piano;
 
     // Import and scale piano frame
-    // ‚¨‚»‚ç‚­ƒtƒŒ[ƒ€‚Ìƒ‚ƒfƒ‹‚Ì’ñ‹Ÿ‚ªI—¹‚µ‚½‚½‚ßg—p•s‰Â”\
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ç‚­ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìƒï¿½ï¿½fï¿½ï¿½ï¿½Ì’ñ‹Ÿ‚ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßgï¿½pï¿½sï¿½Â”\
     // SceneLoader.ImportMesh("frame", "https://docs.microsoft.com/windows/mixed-reality/develop/javascript/tutorials/babylonjs-webxr-piano/files", "pianoFrame.babylon", scene, function(meshes) {
     //     const frame = meshes[0];
     //     frame.parent = piano;
